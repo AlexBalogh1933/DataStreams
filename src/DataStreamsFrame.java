@@ -50,6 +50,7 @@ public class DataStreamsFrame  extends JFrame
         titleLabel = new JLabel("Data Streams");
         titleLabel.setFont(new Font("Times New Roman", Font.BOLD, 40));
         inputTextField = new JTextField();
+        inputTextField.setFont(new Font("Times New Roman", Font.BOLD, 20));
 
         originalTextArea = new JTextArea(5,5);
         TitledBorder originalBorder = BorderFactory.createTitledBorder("Original Text");
@@ -131,8 +132,7 @@ public class DataStreamsFrame  extends JFrame
         public void actionPerformed(ActionEvent AE)
         {
             String filter = inputTextField.getText();
-            try (Stream lines = Files.lines(Paths.get(originalFilePath.toString())))
-            {
+            try (Stream lines = Files.lines(Paths.get(originalFilePath.toString()))) {
                 displayFile = (String) lines
                         .filter(w -> w.toString().contains(filter))
                         .collect(Collectors.joining("\n"));
